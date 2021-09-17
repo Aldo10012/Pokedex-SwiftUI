@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let tempData = tempDataModel
+//    let tempData = tempDataModel
     let apiClient = APIClient()
     @State var pokemonList: [Pokemon] = []
     
@@ -22,7 +22,12 @@ struct ContentView: View {
             ScrollView {
                 LazyVGrid(columns: layout, spacing: 20) {
                     ForEach(pokemonList) { pokemon in
-                        PokemonCell(image: pokemon.url, name: pokemon.name)
+                        let pokemonImage = pokemon.pokemonInfo.forms[0].formInfo.sprites.frontDefault
+                        PokemonCell(image: pokemonImage, name: pokemon.name)
+                            .onAppear(perform: {
+                                print(pokemon.pokemonInfo)
+                            })
+                        
                     }
                 }
             }.navigationTitle("Pokemon")
@@ -51,20 +56,20 @@ struct ContentView_Previews: PreviewProvider {
 
 
 
-let tempDataModel = [
-    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-    Pokemon(name: "Bulbasur", url: bulbasurImageURL)
-]
+//let tempDataModel = [
+//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
+//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
+//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
+//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
+//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
+//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
+//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
+//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
+//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
+//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
+//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
+//    Pokemon(name: "Bulbasur", url: bulbasurImageURL)
+//]
 
 let bulbasurImageURL = "https://cdn2.bulbagarden.net/upload/thumb/2/21/001Bulbasaur.png/250px-001Bulbasaur.png"
 
