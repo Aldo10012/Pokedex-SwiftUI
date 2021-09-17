@@ -25,16 +25,32 @@ class APIClient {
                 return completion(Result.failure(EndPointError.noData))
             }
             
-            guard let result = try? JSONDecoder().decode(PokemonList.self, from: data) else {
-                return completion(Result.failure(EndPointError.couldNotParse))
+            do {
+                let result = try JSONDecoder().decode(PokemonList.self, from: data)
+                print(data)
+                print(result)
+                print(String(data: data, encoding: .utf8))
+
+                DispatchQueue.main.async {
+                    completion(Result.success(result.results))
+                    print("HI")
+                }
+            } catch {
+                 print(error)
+                 completion(Result.failure(EndPointError.couldNotParse))
             }
             
-            print(result)
             
-            DispatchQueue.main.async {
-                completion(Result.success(result.results))
-                print("HI")
-            }
+//            guard let result = try? JSONDecoder().decode(PokemonList.self, from: data) else {
+//                return completion(Result.failure(EndPointError.couldNotParse))
+//            }
+//
+//            let pokemonList = result.results
+//
+//            DispatchQueue.main.async {
+//                completion(Result.success(pokemonList))
+//                print("HI")
+//            }
         }
         task.resume()
         

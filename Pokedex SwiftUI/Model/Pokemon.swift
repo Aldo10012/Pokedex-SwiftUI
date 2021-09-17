@@ -9,7 +9,12 @@ import Foundation
 
 struct PokemonList: Codable, Identifiable {
     var id = UUID()
-    let results = [Pokemon]()
+    let results: [Pokemon]
+    
+    enum CodingKeys: String, CodingKey {
+        case results
+    }
+    
 }
 
 
@@ -17,5 +22,9 @@ struct Pokemon: Codable, Identifiable {
     var id = UUID()
     let name: String
     let url: String
+    
+    enum CodingKeys: String, CodingKey {
+        case name, url
+    }
 }
 
