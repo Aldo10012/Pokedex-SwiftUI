@@ -7,48 +7,26 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct PokedexView: View {
     
-//    let tempData = tempDataModel
-    let apiClient = APIClient()
-    @State var pokemonList: [Pokemon] = []
-    
-    let layout = [
-        GridItem(.adaptive(minimum: screen.width*0.4, maximum: screen.width*0.4))
-    ]
+    private let girItem = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVGrid(columns: layout, spacing: 20) {
-                    ForEach(pokemonList) { pokemon in
-                        let pokemonImage = pokemon.pokemonInfo.forms[0].formInfo.sprites.frontDefault
-                        PokemonCell(image: pokemonImage, name: pokemon.name)
-                            .onAppear(perform: {
-                                print(pokemon.pokemonInfo)
-                            })
-                        
+                LazyVGrid(columns: girItem, spacing: 20) {
+                    ForEach(0..<151) { _ in
+                        PokemonCell2()
                     }
                 }
             }.navigationTitle("Pokemon")
-            .onAppear(perform: {
-                print("onAppear did work!")
-                apiClient.getData { result in
-                    switch result {
-                    case let .success(pokemonList):
-                        self.pokemonList = pokemonList
-                    case let .failure(error):
-                        print(error)
-                    }
-                }
-            })
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        PokedexView()
         PokemonCell(image: "https://cdn2.bulbagarden.net/upload/thumb/2/21/001Bulbasaur.png/250px-001Bulbasaur.png", name: "Bulbasur")
     }
 }

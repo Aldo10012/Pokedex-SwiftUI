@@ -27,9 +27,6 @@ class APIClient {
             
             do {
                 let result = try JSONDecoder().decode(PokemonList.self, from: data)
-//                print(data)
-//                print(result)
-//                print(String(data: data, encoding: .utf8))
 
                 DispatchQueue.main.async {
                     completion(Result.success(result.pokemon))
