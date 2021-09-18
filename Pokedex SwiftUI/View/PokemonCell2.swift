@@ -32,8 +32,7 @@ struct PokemonCell2: View {
                         )
                         .frame(width: 100, height: 24)
                     
-                    Image(uiImage: bulbasurImageURL.load())
-                        // TODO: change to pokemon.imageURL.laod() when API is ready
+                    Image(uiImage: pokemon.imageUrl.load())
                         .resizable()
                         .scaledToFit()
                         .frame(width: 68, height: 68)

@@ -13,6 +13,17 @@ class PokemonViewModel: ObservableObject {
     let baseURL = "https://pokedex-bb36f.firebaseio.com/pokemon.json"
     let urlSession = URLSession.shared
     
+    init() {
+        fetchPokemon { result in
+            switch result {
+            case let .success(pokemon):
+                self.pokemon = pokemon
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
     func fetchPokemon(completion: @escaping (Result<[Pokemon]>) -> () ) {
         guard let url = URL(string: baseURL) else {return}
         let request = URLRequest(url: url)
