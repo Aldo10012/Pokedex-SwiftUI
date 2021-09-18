@@ -14,12 +14,13 @@ struct PokedexView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVGrid(columns: girItem, spacing: 20) {
+                LazyVGrid(columns: girItem, spacing: 16) {
                     ForEach(0..<151) { _ in
-                        PokemonCell2()
+                        PokemonCell2(pokemon: MOCH_DATA[0])
                     }
                 }
-            }.navigationTitle("Pokemon")
+            }
+            .navigationTitle("Pokemon")
         }
     }
 }
@@ -27,27 +28,9 @@ struct PokedexView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         PokedexView()
-        PokemonCell(image: "https://cdn2.bulbagarden.net/upload/thumb/2/21/001Bulbasaur.png/250px-001Bulbasaur.png", name: "Bulbasur")
     }
 }
 
-
-
-
-//let tempDataModel = [
-//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-//    Pokemon(name: "Bulbasur", url: bulbasurImageURL),
-//    Pokemon(name: "Bulbasur", url: bulbasurImageURL)
-//]
 
 let bulbasurImageURL = "https://cdn2.bulbagarden.net/upload/thumb/2/21/001Bulbasaur.png/250px-001Bulbasaur.png"
 

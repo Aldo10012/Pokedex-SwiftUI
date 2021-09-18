@@ -7,59 +7,29 @@
 
 import Foundation
 
-struct PokemonList: Codable, Identifiable {
-    var id = UUID()
-    let pokemon: [Pokemon]
-    
-    enum CodingKeys: String, CodingKey {
-        case pokemon = "results"
-    }
-}
-
-
 struct Pokemon: Codable, Identifiable {
-    var id = UUID()
+    let id: Int
     let name: String
-    let pokemonInfo: PokemonInfo
+    let type: String
+    let imageUrl: String
     
-    enum CodingKeys: String, CodingKey {
-        case name
-        case pokemonInfo = "url"
-    }
+    let attack: Int
+    let defense: Int
+    let description: String
+    let height: Int
+    let weight: Int
+    
 }
 
-struct PokemonInfo: Codable, Identifiable {
-    var id = UUID()
-    let forms: [Form]
-    
-    enum CodingKeys: String, CodingKey {
-        case forms
-    }
-}
-
-struct Form: Codable, Identifiable {
-    var id = UUID()
-    let formInfo: FormInfo
-    
-    enum CodingKeys: String, CodingKey {
-        case formInfo = "url"
-    }
-}
-
-struct FormInfo: Codable, Identifiable {
-    var id = UUID()
-    let sprites: Sprites
-    
-    enum CodingKeys: String, CodingKey {
-        case sprites
-    }
-}
-
-struct Sprites: Codable, Identifiable {
-    var id = UUID()
-    let frontDefault: String
-    
-    enum CodingKeys: String, CodingKey {
-        case frontDefault = "front_default"
-    }
-}
+let MOCH_DATA: [Pokemon] = [
+    Pokemon(id: 0, name: "Bulbasuar", type: "poison", imageUrl: bulbasurImageURL, attack: 10, defense: 10, description: "10", height: 10, weight: 10),
+    Pokemon(id: 1, name: "Bulbasuar", type: "poison", imageUrl: bulbasurImageURL, attack: 10, defense: 10, description: "10", height: 10, weight: 10),
+    Pokemon(id: 2, name: "Bulbasuar", type: "poison", imageUrl: bulbasurImageURL, attack: 10, defense: 10, description: "10", height: 10, weight: 10),
+    Pokemon(id: 3, name: "Bulbasuar", type: "poison", imageUrl: bulbasurImageURL, attack: 10, defense: 10, description: "10", height: 10, weight: 10),
+    Pokemon(id: 4, name: "Bulbasuar", type: "poison", imageUrl: bulbasurImageURL, attack: 10, defense: 10, description: "10", height: 10, weight: 10),
+    Pokemon(id: 5, name: "Bulbasuar", type: "poison", imageUrl: bulbasurImageURL, attack: 10, defense: 10, description: "10", height: 10, weight: 10),
+    Pokemon(id: 6, name: "Bulbasuar", type: "poison", imageUrl: bulbasurImageURL, attack: 10, defense: 10, description: "10", height: 10, weight: 10),
+    Pokemon(id: 7, name: "Bulbasuar", type: "poison", imageUrl: bulbasurImageURL, attack: 10, defense: 10, description: "10", height: 10, weight: 10),
+    Pokemon(id: 8, name: "Bulbasuar", type: "poison", imageUrl: bulbasurImageURL, attack: 10, defense: 10, description: "10", height: 10, weight: 10),
+    Pokemon(id: 9, name: "Bulbasuar", type: "poison", imageUrl: bulbasurImageURL, attack: 10, defense: 10, description: "10", height: 10, weight: 10)
+]

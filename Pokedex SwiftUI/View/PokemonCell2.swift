@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct PokemonCell2: View {
+    
+    let pokemon: Pokemon
+    
     var body: some View {
         ZStack() {
             VStack(alignment: .leading) {
-                Text("Bulbasuar")
+                Text(pokemon.name.capitalized)
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding(.top, 4)
                     .padding(.leading)
                 
                 HStack() {
-                    Text("Poison")
+                    Text(pokemon.type.capitalized)
                         .font(.subheadline).bold()
                         .foregroundColor(.white)
                         .padding(.horizontal, 16)
@@ -30,6 +33,7 @@ struct PokemonCell2: View {
                         .frame(width: 100, height: 24)
                     
                     Image(uiImage: bulbasurImageURL.load())
+                        // TODO: change to pokemon.imageURL.laod() when API is ready
                         .resizable()
                         .scaledToFit()
                         .frame(width: 68, height: 68)
@@ -45,7 +49,7 @@ struct PokemonCell2: View {
 
 struct PokemonCell2_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonCell2()
+        PokemonCell2(pokemon: MOCH_DATA[0])
     }
 }
 
