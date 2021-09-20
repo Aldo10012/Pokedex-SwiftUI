@@ -56,10 +56,10 @@ struct InfoView: View {
                         Spacer()
                     }
                     
-                    StatView(lable: "Height", stat: 7)
-                    StatView(lable: "Attack", stat: 49)
-                    StatView(lable: "Defense", stat: 49)
-                    StatView(lable: "Weight", stat: 69)
+                    StatView(lable: "Height", stat: pokemon.height, color: .orange)
+                    StatView(lable: "Attack", stat: pokemon.attack, color: .red)
+                    StatView(lable: "Defense", stat: pokemon.defense, color: .blue)
+                    StatView(lable: "Weight", stat: pokemon.weight, color: .purple)
                     
                     Spacer()
                 }
@@ -78,36 +78,3 @@ struct InfoView: View {
 //    }
 //}
 
-struct StatView: View {
-    let lable: String
-    let stat: Int
-    
-    init(lable: String, stat: Int) {
-        self.lable = lable
-        self.stat = stat
-    }
-    
-    var body: some View {
-        HStack(spacing: 30) {
-            Text(lable)
-                .font(.system(size: 22))
-                .foregroundColor(.gray)
-            
-            Text("\(stat)")
-                .font(.system(size: 22))
-                .foregroundColor(.gray)
-            
-            ZStack(alignment: .leading) {
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .frame(width: 200, height: 20)
-                    .foregroundColor(Color.black.opacity(0.1))
-                
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .frame(width: 100, height: 20)
-                    .foregroundColor(Color.black.opacity(0.1))
-            }
-            
-            
-        }
-    }
-}
