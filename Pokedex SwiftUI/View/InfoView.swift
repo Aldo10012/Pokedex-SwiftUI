@@ -42,15 +42,7 @@ struct InfoView: View {
                         .fontWeight(.bold)
                         .padding(.top, 30)
                     
-                    Text(pokemon.type.capitalized)
-                        .font(.subheadline)
-                        .fontWeight(.black)
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 8)
-                        .frame(width: 100, height: 34)
-                        .background(backgroundColor)
-                        .cornerRadius(16)
+                    PillView2(type: pokemon.type.capitalized, color: backgroundColor)
                     
                     Text(pokemon.description)
                         .font(.headline)
@@ -80,7 +72,3 @@ struct InfoView: View {
 //        InfoView()
 //    }
 //}
-
-
-
-
