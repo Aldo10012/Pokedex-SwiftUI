@@ -49,17 +49,33 @@ struct InfoView: View {
                         .fontWeight(.medium)
                         .padding(.horizontal, 20)
                     
-                    HStack {
-                        Text("Stats")
-                            .font(.title3).bold()
-                            .padding(.horizontal, 20)
-                        Spacer()
+                    HStack(spacing: 50) {
+                        
+                        VStack() {
+                            Text("\(pokemon.weight) Kg")
+                                .font(.system(size: 28, weight: .semibold, design: .default))
+                                .padding(.bottom, 4)
+                            Text("Weight")
+                                .font(.system(size: 20, weight: .regular, design: .default))
+                        }
+                        
+                        VStack() {
+                            Text("\(pokemon.height) M")
+                                .font(.system(size: 28, weight: .semibold, design: .default))
+                                .padding(.bottom, 4)
+                            Text("Height")
+                                .font(.system(size: 20, weight: .regular, design: .default))
+                        }
                     }
                     
-                    StatView(lable: "Height", stat: pokemon.height, color: .orange)
-                    StatView(lable: "Attack", stat: pokemon.attack, color: .red)
-                    StatView(lable: "Defense", stat: pokemon.defense, color: .blue)
-                    StatView(lable: "Weight", stat: pokemon.weight, color: .purple)
+                    Text("Stats")
+                        .font(.title3).bold()
+                        .padding(.horizontal, 20)
+                        .frame(width: Screen.width, alignment: .leading)
+                    
+                    
+                    StatView(lable: "ATK", stat: pokemon.attack, color: .red)
+                    StatView(lable: "DEF", stat: pokemon.defense, color: .blue)
                     
                     Spacer()
                 }
@@ -72,9 +88,19 @@ struct InfoView: View {
     }
 }
 
-//struct InfoView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        InfoView()
-//    }
-//}
+struct InfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        InfoView(pokemon: samplePokemon, viewModel: samplePokemonViewModel)
+    }
+}
 
+let samplePokemon = Pokemon(id: 0,
+                            name: "Bulbasuar",
+                            type: "poison",
+                            imageUrl: bulbasurImageURL,
+                            attack: 20,
+                            defense: 12,
+                            description: "Littls green monster that wonders the forest. Bulbasuars are vary calm and friendly creatures",
+                            height: 10, weight: 12)
+
+let samplePokemonViewModel = PokemonViewModel()

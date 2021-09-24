@@ -51,7 +51,7 @@ class PokemonViewModel: ObservableObject {
         switch type {
         case "fire": return .systemRed
         case "poison": return .systemGreen
-        case "water": return .systemBlue
+        case "water": return .blue
         case "electric": return .systemYellow
         case "psychic": return .systemPurple
         case "normal": return .systemOrange
